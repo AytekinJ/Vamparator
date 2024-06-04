@@ -25,6 +25,7 @@ public class EnemySpawn : MonoBehaviour
     }
     private IEnumerator enemySpawn()
     {
+        Debug.Log(Time.deltaTime);
         
         while (_isWorking && CurrentEnemyCount < MaxEnemyCount)
         {
@@ -32,7 +33,7 @@ public class EnemySpawn : MonoBehaviour
             float xOffset = playerPosition.position.x + (randomSign * enemySpawnOffset);
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
-            Instantiate(enemyPrefab, new Vector2(randomSign, randomSignY), Quaternion.identity);
+            Instantiate(enemyPrefab, new Vector2(xOffset,yOffset), Quaternion.identity);
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
         }

@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawnRate: 1
-  MaxEnemyCount: 10
+  MaxEnemyCount: 20
   enemySpawnOffset: 20
   CurrentEnemyCount: 0
   playerPosition: {fileID: 1658838653}
