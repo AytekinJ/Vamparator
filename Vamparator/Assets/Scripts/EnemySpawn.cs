@@ -16,7 +16,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private int CurrentEnemyCount = 0;
     [SerializeField] private Transform playerPosition;
     [SerializeField] GameObject[] enemyTransforms;
-    [SerializeField] TextMeshProUGUI timer;
+    [SerializeField] Text timer;
     [Space(10)]
     private bool _isWorking = true;
     int minute;
