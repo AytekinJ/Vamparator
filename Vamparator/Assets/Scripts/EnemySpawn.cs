@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -14,8 +16,11 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private int CurrentEnemyCount = 0;
     [SerializeField] private Transform playerPosition;
     [SerializeField] GameObject[] enemyTransforms;
+    [SerializeField] TextMeshProUGUI timer;
     [Space(10)]
     private bool _isWorking = true;
+    int minute;
+    int second;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
     private void Start()
@@ -23,6 +28,24 @@ public class EnemySpawn : MonoBehaviour
 
         StartCoroutine(enemySpawn());
         
+    }
+    private void Update()
+    {
+        second = (int)Time.time;
+        second -= minute * 60;
+        if (second >= 60)
+        {
+            minute++;
+        }
+        if (second<10)
+        {
+            timer.text = minute + ":0" + second;
+        }
+        else
+        {
+            timer.text = minute + ":" + second;
+            timer.text = minute + ":" + second;
+        }
     }
     private IEnumerator enemySpawn()
     {
