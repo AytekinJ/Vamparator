@@ -1,45 +1,65 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
-    [SerializeField] float radius = 1;
-    [SerializeField] LayerMask EnemyLayerMask;
-    [SerializeField] private GameObject target;
+    [SerializeField] float MaxDistance = 1;
+    [SerializeField] GameObject[] Enemies;
+    [SerializeField] string enemyTag;
+    [SerializeField] GameObject targetEnemy;
+
     void Start()
     {
-
+        Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
     }
+
     void Update()
     {
+        GetEnemies();
         castRay();
-        if (target is not null)
-        { 
-            Debug.DrawLine(transform.position,target.transform.position,Color.red);
+        TryAttack();
+    }
+
+    void GetEnemies()
+    {
+        Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+    }
+
+    void TryAttack()
+    {
+        if (IsCloseEnough())
+        {
+            Attack();
         }
     }
+
+    void Attack()
+    {
+        //attır karşim
+    }
+
     void castRay()
     {
-        Collider2D[] results = Physics2D.OverlapCircleAll(transform.position, radius);
-        float minDistance = 5f;
-        Collider2D closest = null;
-        foreach (Collider2D r in results)
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+        foreach (GameObject enemy in Enemies)
         {
-            float distance = Vector2.Distance(transform.position, r.transform.position);
-            if (distance < minDistance)
+            float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
+            if (distanceToEnemy < shortestDistance)
             {
-                minDistance = distance;
-                closest = r;
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
             }
         }
-        if (closest != null)
-        {
-            target = closest.gameObject;
-        }
+        targetEnemy = nearestEnemy != null ? nearestEnemy : null;
     }
-    private void OnDrawGizmos()
+
+    bool IsCloseEnough()
     {
-        Gizmos.DrawWireSphere(transform.position, radius);
+        if (targetEnemy == null)
+            return false;
+        return Vector2.Distance(transform.position, targetEnemy.transform.position) >= MaxDistance;
     }
 }
