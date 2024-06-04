@@ -9,6 +9,10 @@ public class EnemyMeleeAttack : MonoBehaviour
     [SerializeField] GameObject[] Enemies;
     [SerializeField] string enemyTag;
     [SerializeField] GameObject targetEnemy;
+    [SerializeField] GameObject BulletPrefab;
+    [SerializeField] float bulletSpeed;
+    [SerializeField] float shootDelay = 1f;
+    [SerializeField] float lastTimeShooted;
 
     void Start()
     {
@@ -37,7 +41,15 @@ public class EnemyMeleeAttack : MonoBehaviour
 
     void Attack()
     {
-        //attır karşim
+        if (Time.time > lastTimeShooted+shootDelay)
+        {
+            Vector2 targetPosRot = transform.position - targetEnemy.transform.position;
+            GameObject bullet = Instantiate(BulletPrefab,transform.position,Quaternion.identity);
+            Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
+            bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
+            Debug.Log("mermi ateşlendi");
+            lastTimeShooted = Time.time;
+        }
     }
 
     void castRay()
@@ -60,6 +72,6 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (targetEnemy == null)
             return false;
-        return Vector2.Distance(transform.position, targetEnemy.transform.position) >= MaxDistance;
+        return Vector2.Distance(transform.position, targetEnemy.transform.position) <= MaxDistance;
     }
 }
