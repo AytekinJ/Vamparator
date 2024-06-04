@@ -48,7 +48,6 @@ public class EnemyMeleeAttack : MonoBehaviour
             GameObject bullet = Instantiate(BulletPrefab,transform.position,Quaternion.identity);
             Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
             bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
-            Debug.Log("mermi ateşlendi");
             lastTimeShooted = Time.time;
         }
     }

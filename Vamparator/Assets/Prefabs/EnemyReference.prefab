@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 0}
+  enemyrb: {fileID: 0}
   speed: 2
 --- !u!50 &1449979213463098081
 Rigidbody2D:
@@ -161,3 +162,6 @@ MonoBehaviour:
   weaponAttackLayer:
     serializedVersion: 2
     m_Bits: 64
+  hitEffect: {fileID: 6953868920019144380, guid: 67f1c56703a1abb4e9f6eaa66e0e137c,
+    type: 3}
+  Blood: {fileID: 2529732539166139203, guid: 4f3088e361813b942ad7f9d300f4bf70, type: 3}

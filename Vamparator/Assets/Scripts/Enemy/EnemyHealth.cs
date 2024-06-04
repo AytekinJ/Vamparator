@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float baseBloodID = 10;
     [SerializeField] LayerMask meleeAttackLayer;
     [SerializeField] LayerMask weaponAttackLayer;
+    [SerializeField] GameObject hitEffect;
+    [SerializeField] GameObject Blood;
     PlayerBloodEvents blood;
     private void Start()
     {
@@ -23,9 +25,13 @@ public class EnemyHealth : MonoBehaviour
             if (enemyHealth < 0)
             {
                 Destroy(gameObject);
-                blood.increase(Random.Range(1, 3)*baseBloodID);
+                Instantiate(Blood,transform.position,Quaternion.identity);
             }
-            
+            Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
+            Quaternion rotation = new Quaternion();
+            rotation.eulerAngles = (transform.position - collision.gameObject.transform.position)*-1;
+            GameObject effect = Instantiate(hitEffect, transform.position,rotation);
+            Destroy(effect,1);
         }
         
     }
