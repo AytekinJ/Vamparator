@@ -13,6 +13,7 @@ public class EnemySpawn : MonoBehaviour
     [Header("Real Time Values")]
     [SerializeField] private int CurrentEnemyCount = 0;
     [SerializeField] private Transform playerPosition;
+    [SerializeField] GameObject[] enemyTransforms;
     [Space(10)]
     private bool _isWorking = true;
     [Header("Prefab")]
