@@ -7,23 +7,18 @@ using UnityEngine.UI;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [Header("Enemy")]
+    [Header("Constant")]
     [SerializeField] private float enemySpawnRate = 1.0f;
     [SerializeField] private int MaxEnemyCount = 10;
     [SerializeField] private float enemySpawnOffset = 20;
-    [SerializeField] public int CurrentEnemyCount = 0;
-    [SerializeField] GameObject[] enemyTransforms;
-    [Space(10)]
-    [Header("Blood")]
-    [SerializeField] public float baseDamage = 10;
-    [SerializeField] public float healMultipler = 5;
-    [SerializeField] public float ChanceofBlood = 3;
-    [SerializeField] public float decreaseAmount = 5;
-    [SerializeField] public float decreaseRate = 0.5f;
+    [SerializeField] public float enemySpeed = 2;
+    [SerializeField] public float enemyDamage = 5;
     [Space(10)]
     [Header("Real Time Values")]
+    [SerializeField] public int CurrentEnemyCount = 0;
     [SerializeField] private Transform playerPosition;
     [SerializeField] private EnemyMeleeAttack attack;
+    [SerializeField] GameObject[] enemyTransforms;
     [SerializeField] Text timer;
     [Space(10)]
     private bool _isWorking = true;
@@ -49,6 +44,8 @@ public class EnemySpawn : MonoBehaviour
             enemySpawnRate -= 0.05f;
             MaxEnemyCount += 20;
             attack.shootDelay -= 0.05f;
+            enemySpeed += 0.5f;
+            enemyDamage += 2;
             increase = true;
         }
         if (second == 30 && increase)
@@ -56,6 +53,8 @@ public class EnemySpawn : MonoBehaviour
             enemySpawnRate -= 0.05f;
             MaxEnemyCount += 20;
             attack.shootDelay -= 0.05f;
+            enemySpeed += 0.5f;
+            enemyDamage += 2;
             increase = false;
         }
         if (second<10)

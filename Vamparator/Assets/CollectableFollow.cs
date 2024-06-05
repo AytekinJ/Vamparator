@@ -8,15 +8,14 @@ public class CollectableFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
+    [SerializeField] private float healMultipler = 5;
     [SerializeField] private float smooth;
     PlayerBloodEvents playerBloodEvents;
-    EnemySpawn es;
     bool isTouched = false;
     Vector3 velocity = Vector3.zero;
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
     }
     private void Update()
     {
@@ -34,7 +33,7 @@ public class CollectableFollow : MonoBehaviour
             isTouched = true;
             playerBloodEvents = target.GetComponent<PlayerBloodEvents>();
             Destroy(gameObject, 0.2f);
-            playerBloodEvents.increase(Random.Range(1, 3) * es.healMultipler);
+            playerBloodEvents.increase(Random.Range(1, 3) * healMultipler);
         }
     }
 }

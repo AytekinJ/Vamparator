@@ -6,12 +6,13 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     PlayerBloodEvents blood;
-    [SerializeField] float baseDamage = 10;
-    [SerializeField] float attackDelay = 1f;
+    public float attackDelay = 1f;
+    EnemySpawn es;
     bool _isWorking = false;
     void Start()
     {
         blood = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBloodEvents>();
+        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
     }
     void Update()
     {
@@ -20,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
     IEnumerator enemyAttack()
     {
         _isWorking = true;
-        blood.decrease(Random.Range(1, 3) * baseDamage);
+        blood.decrease(Random.Range(1, 3) * es.enemyDamage);
         yield return new WaitForSeconds(attackDelay);
         _isWorking = false;
     }

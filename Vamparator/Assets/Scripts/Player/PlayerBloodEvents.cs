@@ -7,13 +7,10 @@ public class PlayerBloodEvents : MonoBehaviour
 {
     [SerializeField] float bloodAmount = 50; // Max 100
     [SerializeField] Image blood;
-    EnemySpawn es;
+    [SerializeField] float decreaseAmount = 5;
+    [SerializeField] float decreaseRate = 0.5f;
     [SerializeField] Animation healingFade;
     private bool _isWorking = false;
-    private void Start()
-    {
-        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
-    }
     void Update()
     {
         blood.fillAmount = bloodAmount/100;
@@ -44,16 +41,16 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount += increaseAmount;
         }
-            healingFade.Play();
+        healingFade.Play();
     }
     IEnumerator bloodDecrease()
     {
         _isWorking = true;
         if (bloodAmount > 0)
         {
-            bloodAmount -= es.decreaseAmount;
+            bloodAmount -= decreaseAmount;
         }
-        yield return new WaitForSeconds(es.decreaseRate);
+        yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
     }
 }

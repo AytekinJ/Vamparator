@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float enemyHealth = 100;
+    [SerializeField] float baseDamage = 10;
     [SerializeField] LayerMask meleeAttackLayer;
     [SerializeField] LayerMask weaponAttackLayer;
     [SerializeField] GameObject hitEffect;
@@ -21,12 +22,12 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             Destroy(collision.gameObject);
-            enemyHealth -= es.baseDamage;
+            enemyHealth -= baseDamage;
             if (enemyHealth < 0)
             {
                 Destroy(gameObject);
                 es.CurrentEnemyCount--;
-                float random = Random.Range(1, es.ChanceofBlood);
+                float random = Random.Range(1, 3);
                 if (random == 2)
                 {
                     Instantiate(Blood, transform.position, Quaternion.identity);

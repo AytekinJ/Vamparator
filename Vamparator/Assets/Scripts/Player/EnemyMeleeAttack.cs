@@ -12,7 +12,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] float bulletSpeed;
     [SerializeField] float bulletRangeBySecond = 1.5f;
-    public float shootDelay = 1f;
+    [SerializeField] public float shootDelay = 1f;
     [SerializeField] float lastTimeShooted;
     [SerializeField] float offsetMultipler = -2;
 
@@ -49,7 +49,7 @@ public class EnemyMeleeAttack : MonoBehaviour
             GameObject bullet = Instantiate(BulletPrefab,transform.position+targetPosRot.normalized*offsetMultipler,Quaternion.identity);
             Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
             bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
-            Destroy(bullet, bulletRangeBySecond);
+            Destroy(bullet,bulletRangeBySecond);
             lastTimeShooted = Time.time;
         }
     }

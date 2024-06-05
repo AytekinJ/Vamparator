@@ -731,11 +731,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c300640497b14084b882ddd7be3c07bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnRate: 0.5
-  MaxEnemyCount: 50
+  enemySpawnRate: 1
+  MaxEnemyCount: 20
   enemySpawnOffset: 7
+  enemySpeed: 2
+  enemyDamage: 2
   CurrentEnemyCount: 0
   playerPosition: {fileID: 1658838653}
+  attack: {fileID: 1658838655}
   enemyTransforms: []
   timer: {fileID: 1329881517}
   enemyPrefab: {fileID: 4775079042370816718, guid: d3340ff3afc09334780bcf8e7362c6da,
@@ -101404,8 +101407,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodAmount: 50
   blood: {fileID: 391316888}
-  decreaseAmount: 1
-  decreaseRate: 0.5
+  decreaseAmount: 2.5
+  decreaseRate: 1
   healingFade: {fileID: 549607157}
 --- !u!114 &1658838655
 MonoBehaviour:
@@ -101427,7 +101430,7 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: -10
   bulletRangeBySecond: 0.5
-  shootDelay: 0.6
+  shootDelay: 1
   lastTimeShooted: 0
   offsetMultipler: -1
 --- !u!70 &1658838656
