@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1449979213463098081}
   - component: {fileID: 7632757184562953752}
   - component: {fileID: 962115518}
+  - component: {fileID: 7164125421968279535}
   m_Layer: 3
   m_Name: EnemyReference
   m_TagString: Enemy
@@ -103,7 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 0}
   enemyrb: {fileID: 0}
-  speed: 2
+  speed: 4
 --- !u!50 &1449979213463098081
 Rigidbody2D:
   serializedVersion: 4
@@ -155,7 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHealth: 100
   baseDamage: 51
-  baseBloodID: 10
   meleeAttackLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -165,3 +165,17 @@ MonoBehaviour:
   hitEffect: {fileID: 6953868920019144380, guid: 67f1c56703a1abb4e9f6eaa66e0e137c,
     type: 3}
   Blood: {fileID: 2529732539166139203, guid: 4f3088e361813b942ad7f9d300f4bf70, type: 3}
+--- !u!114 &7164125421968279535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775079042370816718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142ddb43325eac74eb3c5ecadbb031e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 2
+  attackDelay: 1

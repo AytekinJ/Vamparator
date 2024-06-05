@@ -5,26 +5,32 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float enemyHealth = 100;
-    [SerializeField] float baseDamage = 10;
     [SerializeField] LayerMask meleeAttackLayer;
     [SerializeField] LayerMask weaponAttackLayer;
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject Blood;
     PlayerBloodEvents blood;
+    EnemySpawn es;
     private void Start()
     {
         blood = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBloodEvents>();
+        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             Destroy(collision.gameObject);
-            enemyHealth -= baseDamage;
+            enemyHealth -= es.baseDamage;
             if (enemyHealth < 0)
             {
                 Destroy(gameObject);
-                Instantiate(Blood,transform.position,Quaternion.identity);
+                es.CurrentEnemyCount--;
+                float random = Random.Range(1, es.ChanceofBlood);
+                if (random == 2)
+                {
+                    Instantiate(Blood, transform.position, Quaternion.identity);
+                }
             }
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
             GameObject effect = Instantiate(hitEffect,transform.position,Quaternion.identity);
