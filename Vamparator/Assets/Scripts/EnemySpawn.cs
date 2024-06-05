@@ -22,10 +22,12 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private EnemyMeleeAttack attack;
     [SerializeField] GameObject[] enemyTransforms;
     [SerializeField] Text timer;
+    [SerializeField] GameObject powerUpText;
     [Space(10)]
     private bool _isWorking = true;
     private bool _isWorking2 = false;
     private bool increase = true;
+
     int minute;
     int second;
     [Header("Prefab")]
@@ -49,6 +51,7 @@ public class EnemySpawn : MonoBehaviour
             enemySpeed += 0.5f;
             enemyDamage += 2;
             enemyHealth += 5;
+            StartCoroutine(textShow());
             increase = true;
         }
         if (second == 30 && increase)
@@ -59,6 +62,7 @@ public class EnemySpawn : MonoBehaviour
             enemySpeed += 0.5f;
             enemyDamage += 2;
             enemyHealth += 5;
+            StartCoroutine(textShow());
             increase = false;
         }
         if (second<10)
@@ -90,6 +94,16 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(enemySpawnRate);
         }
         _isWorking2 = false;
+    }
+    IEnumerator textShow()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            powerUpText.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            powerUpText.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+        }
     }
     public void DecreaseEnemyCount()
     {

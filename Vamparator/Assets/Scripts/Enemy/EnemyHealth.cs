@@ -30,8 +30,8 @@ public class EnemyHealth : MonoBehaviour
             {
                 Destroy(gameObject);
                 es.CurrentEnemyCount--;
-                float randomNum = Random.Range(1, 3);
-                if (randomNum == 2)
+                float randomNum = Random.Range(0, 2);
+                if (randomNum == 1)
                 {
                     Instantiate(Blood, transform.position, Quaternion.identity);
                 }
