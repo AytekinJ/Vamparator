@@ -13,6 +13,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private float enemySpawnOffset = 20;
     [SerializeField] public float enemySpeed = 2;
     [SerializeField] public float enemyDamage = 5;
+    [SerializeField] public float PlayerDamage = 1;
+    [SerializeField] public float enemyHealth = 2;
     [Space(10)]
     [Header("Real Time Values")]
     [SerializeField] public int CurrentEnemyCount = 0;
@@ -46,6 +48,7 @@ public class EnemySpawn : MonoBehaviour
             attack.shootDelay -= 0.05f;
             enemySpeed += 0.5f;
             enemyDamage += 2;
+            enemyHealth += 5;
             increase = true;
         }
         if (second == 30 && increase)
@@ -55,6 +58,7 @@ public class EnemySpawn : MonoBehaviour
             attack.shootDelay -= 0.05f;
             enemySpeed += 0.5f;
             enemyDamage += 2;
+            enemyHealth += 5;
             increase = false;
         }
         if (second<10)

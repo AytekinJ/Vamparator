@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] float enemyHealth = 100;
-    [SerializeField] float baseDamage = 10;
+    [SerializeField] float enemyHealth;
+    [SerializeField] float baseDamage;
     [SerializeField] LayerMask meleeAttackLayer;
     [SerializeField] LayerMask weaponAttackLayer;
     [SerializeField] GameObject hitEffect;
@@ -16,19 +16,22 @@ public class EnemyHealth : MonoBehaviour
     {
         blood = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBloodEvents>();
         es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
+        enemyHealth = es.enemyHealth;
+        baseDamage = es.PlayerDamage;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             Destroy(collision.gameObject);
-            enemyHealth -= baseDamage;
+            float random = Random.Range(1, 3);
+            enemyHealth -= baseDamage*random;
             if (enemyHealth < 0)
             {
                 Destroy(gameObject);
                 es.CurrentEnemyCount--;
-                float random = Random.Range(1, 3);
-                if (random == 2)
+                float randomNum = Random.Range(1, 3);
+                if (randomNum == 2)
                 {
                     Instantiate(Blood, transform.position, Quaternion.identity);
                 }
