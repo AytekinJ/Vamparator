@@ -21,16 +21,33 @@ public class PlayerBloodEvents : MonoBehaviour
 
     public void decrease(float decreaseAmount)
     {
-        bloodAmount -= decreaseAmount;
+        if ((bloodAmount -= decreaseAmount) < 0)
+        {
+            bloodAmount = 0;
+        }
+        else
+        {
+            bloodAmount -= decreaseAmount;
+        }
     }
     public void increase(float increaseAmount)
     {
-        bloodAmount += increaseAmount;
+        if ((bloodAmount+=increaseAmount) > 100)
+        {
+            bloodAmount = 100;
+        }
+        else
+        {
+            bloodAmount += increaseAmount;
+        }
     }
     IEnumerator bloodDecrease()
     {
         _isWorking = true;
-        bloodAmount -= decreaseAmount;
+        if (bloodAmount > 0)
+        {
+            bloodAmount -= decreaseAmount;
+        }
         yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
     }

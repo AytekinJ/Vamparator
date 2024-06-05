@@ -13,6 +13,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootDelay = 1f;
     [SerializeField] float lastTimeShooted;
+    [SerializeField] float offsetMultipler = -2;
 
     void Start()
     {
@@ -43,8 +44,8 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (Time.time > lastTimeShooted+shootDelay)
         {
-            Vector2 targetPosRot = transform.position - targetEnemy.transform.position;
-            GameObject bullet = Instantiate(BulletPrefab,transform.position,Quaternion.identity);
+            Vector3 targetPosRot = transform.position - targetEnemy.transform.position;
+            GameObject bullet = Instantiate(BulletPrefab,transform.position+targetPosRot.normalized*offsetMultipler,Quaternion.identity);
             Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
             bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
             lastTimeShooted = Time.time;

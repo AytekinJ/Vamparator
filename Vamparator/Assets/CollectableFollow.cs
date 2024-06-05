@@ -26,13 +26,13 @@ public class CollectableFollow : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        Debug.Log(collision.gameObject.layer + " " + LayerMask.NameToLayer("Player"));
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) 
         {
             isTouched = true;
-            playerBloodEvents = collision.GetComponent<PlayerBloodEvents>();
+            playerBloodEvents = target.GetComponent<PlayerBloodEvents>();
             Destroy(gameObject, 0.2f);
             playerBloodEvents.increase(Random.Range(1, 3) * 10);
         }
-
     }
 }

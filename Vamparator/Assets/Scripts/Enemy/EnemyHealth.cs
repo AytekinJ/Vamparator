@@ -27,9 +27,7 @@ public class EnemyHealth : MonoBehaviour
                 Instantiate(Blood,transform.position,Quaternion.identity);
             }
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
-            Quaternion rotation = new Quaternion();
-            rotation.eulerAngles = (transform.position - collision.gameObject.transform.position)*-1;
-            GameObject effect = Instantiate(hitEffect, transform.position,rotation);
+            GameObject effect = Instantiate(hitEffect,transform.position,Quaternion.identity);
             Destroy(effect,1);
         }
         
