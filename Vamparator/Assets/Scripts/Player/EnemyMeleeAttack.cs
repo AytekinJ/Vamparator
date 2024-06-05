@@ -13,7 +13,6 @@ public class EnemyMeleeAttack : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float shootDelay = 1f;
     [SerializeField] float lastTimeShooted;
-    [SerializeField] PlayerBloodEvents blood;
 
     void Start()
     {

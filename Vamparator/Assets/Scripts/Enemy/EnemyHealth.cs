@@ -6,7 +6,6 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float enemyHealth = 100;
     [SerializeField] float baseDamage = 10;
-    [SerializeField] float baseBloodID = 10;
     [SerializeField] LayerMask meleeAttackLayer;
     [SerializeField] LayerMask weaponAttackLayer;
     [SerializeField] GameObject hitEffect;
