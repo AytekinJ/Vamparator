@@ -39,7 +39,6 @@ public class EnemyHealth : MonoBehaviour
                 }
 
                 GameManager.Score++;
-                Debug.Log(GameManager.Score);
 
                 Destroy(gameObject);
             }
