@@ -11,7 +11,7 @@ public class EnemyBulletCollide : MonoBehaviour
             EnemySpawn enemySpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
             PlayerBloodEvents pbe = collision.gameObject.GetComponent<PlayerBloodEvents>();
             Destroy(gameObject);
-            pbe.decrease(enemySpawn.enemyRangedDamage);
+            pbe.decrease(enemySpawn.EnemyRangedDamage);
         }
     }
 }
