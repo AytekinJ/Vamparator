@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     float RawHorizontalInput;
 
     Animator animator;
-
+    public bool canMove = true;
     bool isFacingRight = true;
 
     private void Start()
@@ -29,7 +29,11 @@ public class PlayerMovement : MonoBehaviour
         isWalking = RawHorizontalInput != 0 || RawVerticalInput != 0 ? 1 : 0;
         animator.SetFloat("isWalking", isWalking);
 
-        CharacterMove(RawVerticalInput, RawHorizontalInput);
+        if(canMove)
+        {
+            CharacterMove(RawVerticalInput, RawHorizontalInput);
+        }
+        
         Flip();
     }
     void CharacterMove(float Vertical, float Horizontal)
