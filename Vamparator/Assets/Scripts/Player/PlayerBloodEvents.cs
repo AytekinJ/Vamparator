@@ -15,8 +15,15 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] EnemyMeleeAttack attack;
     [SerializeField] GameObject dyingImage;
     [SerializeField] GameObject restartButton;
+    [SerializeField] GameObject upgradePage;
+
+    Animator animator;
     private bool _isWorking = false;
 
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Update()
     {
         blood.fillAmount = bloodAmount/100;
@@ -69,9 +76,15 @@ public class PlayerBloodEvents : MonoBehaviour
     }
     IEnumerator Dying()
     {
+        animator.SetBool("isDead", true);
+        //gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        //gameObject.transform.GetChild(0).GetComponent<CapsuleCollider2D>().enabled = true;
+        gameObject.GetComponent<PlayerMovement>().canMove = false;
+        upgradePage.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
         dyingImage.SetActive(true);
         attack.enabled = false;
-        movement.CharacterSpeed = 0;
+        //movement.CharacterSpeed = 0;
         yield return new WaitForSeconds(2.5f);
         restartButton.SetActive(true);
     }
