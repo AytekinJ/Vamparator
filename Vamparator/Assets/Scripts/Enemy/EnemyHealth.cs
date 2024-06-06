@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GM;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -11,31 +12,38 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject Blood;
     PlayerBloodEvents blood;
-    EnemySpawn es;
+    EnemySpawn enemySpawn;
+
     private void Start()
     {
         blood = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBloodEvents>();
-        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
-        enemyHealth = es.enemyHealth;
-        baseDamage = es.PlayerDamage;
+        enemySpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
+        enemyHealth = enemySpawn.enemyHealth;
+        baseDamage = enemySpawn.PlayerDamage;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             Destroy(collision.gameObject);
-            float random = Random.Range(1, 3);
-            enemyHealth -= baseDamage*random;
+            enemyHealth -= baseDamage;
+
             if (enemyHealth < 0)
             {
-                Destroy(gameObject);
-                es.CurrentEnemyCount--;
+                enemySpawn.CurrentEnemyCount--;
                 float randomNum = Random.Range(0, 2);
+
                 if (randomNum == 1)
                 {
                     Instantiate(Blood, transform.position, Quaternion.identity);
                 }
+
+                GameManager.Score++;
+                Debug.Log(GameManager.Score);
+
+                Destroy(gameObject);
             }
+
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
             GameObject effect = Instantiate(hitEffect,transform.position,Quaternion.identity);
             Destroy(effect,1);

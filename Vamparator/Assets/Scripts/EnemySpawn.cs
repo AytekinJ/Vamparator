@@ -32,16 +32,21 @@ public class EnemySpawn : MonoBehaviour
     int second;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
+
+
     private void Start()
     {
 
         StartCoroutine(enemySpawn());
         
     }
-    private void Update()
+
+
+    void Update()
     {
         second = (int)Time.time;
         second -= minute * 60;
+
         if (second >= 60)
         {
             minute++;
@@ -54,6 +59,7 @@ public class EnemySpawn : MonoBehaviour
             StartCoroutine(textShow());
             increase = true;
         }
+
         if (second == 30 && increase)
         {
             enemySpawnRate -= 0.05f;
@@ -65,6 +71,7 @@ public class EnemySpawn : MonoBehaviour
             StartCoroutine(textShow());
             increase = false;
         }
+
         if (second<10)
         {
             timer.text = minute + ":0" + second;
@@ -74,15 +81,18 @@ public class EnemySpawn : MonoBehaviour
             timer.text = minute + ":" + second;
             timer.text = minute + ":" + second;
         }
+
         if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2)
         {
             StartCoroutine(enemySpawn());
         }
     }
+
     private IEnumerator enemySpawn()
     {
         Debug.Log(Time.deltaTime);
         _isWorking2 = true;
+
         while (_isWorking && CurrentEnemyCount < MaxEnemyCount)
         {
             float randomSign = Random.value < 0.5f ? -1f : 1f;
@@ -93,8 +103,10 @@ public class EnemySpawn : MonoBehaviour
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
         }
+
         _isWorking2 = false;
     }
+
     IEnumerator textShow()
     {
         for (int i = 0; i < 5; i++)
@@ -105,6 +117,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
     public void DecreaseEnemyCount()
     {
         CurrentEnemyCount--;

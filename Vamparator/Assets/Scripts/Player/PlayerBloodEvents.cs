@@ -9,8 +9,10 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] Image blood;
     [SerializeField] float decreaseAmount = 5;
     [SerializeField] float decreaseRate = 0.5f;
-    [SerializeField] Animation healingFade;
+    [SerializeField] Animation healingFadeAnim;
+    [SerializeField] Animation RecieveDamageAnim;
     private bool _isWorking = false;
+
     void Update()
     {
         blood.fillAmount = bloodAmount/100;
@@ -30,7 +32,9 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount -= decreaseAmount;
         }
+        RecieveDamageAnim.Play();
     }
+
     public void increase(float increaseAmount)
     {
         if ((bloodAmount+=increaseAmount) > 100)
@@ -41,8 +45,9 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount += increaseAmount;
         }
-        healingFade.Play();
+        healingFadeAnim.Play();
     }
+
     IEnumerator bloodDecrease()
     {
         _isWorking = true;
