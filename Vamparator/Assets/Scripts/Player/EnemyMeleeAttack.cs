@@ -16,9 +16,12 @@ public class EnemyMeleeAttack : MonoBehaviour
     [SerializeField] float lastTimeShooted;
     [SerializeField] float offsetMultipler = -2;
 
+    Animator animator;
+
     void Start()
     {
         Enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -51,6 +54,7 @@ public class EnemyMeleeAttack : MonoBehaviour
             bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
             Destroy(bullet, bulletRangeBySecond);
             lastTimeShooted = Time.time;
+            animator.SetTrigger("Shoot");
         }
     }
 

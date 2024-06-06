@@ -102688,8 +102688,9 @@ GameObject:
   - component: {fileID: 1658838654}
   - component: {fileID: 1658838657}
   - component: {fileID: 1658838656}
+  - component: {fileID: 1658838658}
   m_Layer: 8
-  m_Name: PlayerRef
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102708,6 +102709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSpeed: 6
+  isWalking: 0
 --- !u!212 &1658838652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102749,9 +102751,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee,
-    type: 3}
-  m_Color: {r: 0.9018409, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ba968db29354b6b4baf035633860af43, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -102830,8 +102831,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.040594608, y: -0.08569986}
+  m_Size: {x: 0.9188108, y: 1.4961561}
   m_Direction: 0
 --- !u!50 &1658838657
 Rigidbody2D:
@@ -102854,6 +102855,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &1658838658
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658838649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9593af79c0162b74eb4f76bbfc2622cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1693177368
 GameObject:
   m_ObjectHideFlags: 0
