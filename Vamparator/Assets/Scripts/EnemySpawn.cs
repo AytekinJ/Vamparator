@@ -13,8 +13,13 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private float enemySpawnOffset = 20;
     [SerializeField] public float enemySpeed = 2;
     [SerializeField] public float enemyDamage = 5;
+    [SerializeField] public float enemyRangedDamage = 3;
     [SerializeField] public float PlayerDamage = 1;
     [SerializeField] public float enemyHealth = 2;
+    [SerializeField] public float EnemyBulletOffsetMultipler;
+    [SerializeField] public float EnemyBulletRangeBySecond = 1f;
+    [SerializeField] public float EnemyBulletSpeed = -10.0f;
+    [SerializeField] public float EnemyShootDelay = 1f;
     [Space(10)]
     [Header("Real Time Values")]
     [SerializeField] public int CurrentEnemyCount = 0;
@@ -31,6 +36,7 @@ public class EnemySpawn : MonoBehaviour
     int minute;
     int second;
     [Header("Prefab")]
+    [SerializeField] public GameObject enemyBullet;
     [SerializeField] private GameObject enemyPrefab;
     private void Start()
     {
