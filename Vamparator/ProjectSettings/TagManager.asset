@@ -11,6 +11,7 @@ TagManager:
   - 4
   - 5
   - Blood
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Bullet
   - Collectable
   - Player
-  - 
+  - EnemyBullet
   - 
   - 
   - 

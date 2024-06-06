@@ -15,6 +15,11 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] public float enemyDamage = 5;
     [SerializeField] public float PlayerDamage = 1;
     [SerializeField] public float enemyHealth = 2;
+    [SerializeField] public float EnemyRangedDamage = 3;
+    [SerializeField] public float EnemyBulletOffsetMultipler = -1;
+    [SerializeField] public float EnemyBulletRangeBySecond = 2;
+    [SerializeField] public float EnemyBulletSpeed = 2;
+    [SerializeField] public float EnemyShootDelay = 2;
     [Space(10)]
     [Header("Real Time Values")]
     [SerializeField] public int CurrentEnemyCount = 0;
@@ -32,6 +37,8 @@ public class EnemySpawn : MonoBehaviour
     int second;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject RangedEnemyPrefab;
+    [SerializeField] public GameObject enemyBullet;
 
 
     private void Start()
@@ -99,7 +106,15 @@ public class EnemySpawn : MonoBehaviour
             float xOffset = playerPosition.position.x + (randomSign * enemySpawnOffset);
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
-            Instantiate(enemyPrefab, new Vector2(xOffset,yOffset), Quaternion.identity);
+            float random = Random.Range(0, 6);
+            if (random == 1)
+            {
+                Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(enemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+            }
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
         }

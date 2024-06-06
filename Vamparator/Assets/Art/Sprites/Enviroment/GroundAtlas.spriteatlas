@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GroundAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -1836958268, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -945798135, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1190390751, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1766821881, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1086492761, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 958705230, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -142923977, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 940726291, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -530427751, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1945455338, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1547917608, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 401609498, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -844492728, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -1181954298, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 747240138, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 383448242, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -1102715870, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1329656748, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 1641523581, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 737283288, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: -1097470766, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  - {fileID: 535141507, guid: 996354b2e8bf4fb4ea508183b6c3b27b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - GroundVamparator_19
+  - GroundVamparator_18
+  - GroundVamparator_15
+  - GroundVamparator_14
+  - GroundVamparator_17
+  - GroundVamparator_16
+  - GroundVamparator_11
+  - GroundVamparator_10
+  - GroundVamparator_13
+  - GroundVamparator_12
+  - GroundVamparator_8
+  - GroundVamparator_9
+  - GroundVamparator_6
+  - GroundVamparator_7
+  - GroundVamparator_4
+  - GroundVamparator_5
+  - GroundVamparator_2
+  - GroundVamparator_3
+  - GroundVamparator_0
+  - GroundVamparator_1
+  - GroundVamparator_20
+  - GroundVamparator_21
+  m_RenderDataMap: {}
+  m_Tag: GroundAtlas
+  m_IsVariant: 0
