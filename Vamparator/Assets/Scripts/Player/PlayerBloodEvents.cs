@@ -8,7 +8,7 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] float bloodAmount = 50; // Max 100
     [SerializeField] Image blood;
     [SerializeField] float decreaseAmount = 5;
-    [SerializeField] float decreaseRate = 0.5f;
+    [SerializeField] public float decreaseRate = 0.5f;
     [SerializeField] Animation healingFadeAnim;
     [SerializeField] Animation RecieveDamageAnim;
     private bool _isWorking = false;

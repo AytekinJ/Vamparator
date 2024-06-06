@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class EnemyMeleeAttack : MonoBehaviour
 {
-    [SerializeField] float MaxDistance = 1;
+    public float MaxDistance = 1;
     [SerializeField] GameObject[] Enemies;
     [SerializeField] string enemyTag;
     [SerializeField] GameObject targetEnemy;
     [SerializeField] GameObject BulletPrefab;
-    [SerializeField] float bulletSpeed;
-    [SerializeField] float bulletRangeBySecond = 1.5f;
-    [SerializeField] public float shootDelay = 1f;
+    public float bulletSpeed;
+    public float bulletRangeBySecond = 1.5f;
+    public float shootDelay = 1f;
     [SerializeField] float lastTimeShooted;
     [SerializeField] float offsetMultipler = -2;
 

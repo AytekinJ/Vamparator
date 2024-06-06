@@ -8,7 +8,7 @@ public class CollectableFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private Vector3 offset;
-    [SerializeField] private float healMultipler = 5;
+    [SerializeField] public float healMultipler = 5;
     [SerializeField] private float smooth;
     PlayerBloodEvents playerBloodEvents;
     bool isTouched = false;

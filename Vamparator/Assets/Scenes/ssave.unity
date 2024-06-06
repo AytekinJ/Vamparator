@@ -279,9 +279,14 @@ MonoBehaviour:
   UpgradeBtn1: {fileID: 1746259855}
   UpgradeBtn2: {fileID: 418098323}
   UpgradeBtn3: {fileID: 271102706}
-  Upgrade1InfoText: '1sen '
-  Upgrade2InfoText: '2ana '
-  Upgrade3InfoText: 3skm
+  Upgrade1InfoText: Common
+  Upgrade2InfoText: Rare
+  Upgrade3InfoText: Epic
+  meleeAttackScript: {fileID: 0}
+  enemySpawnScript: {fileID: 0}
+  KANCOLLIDERI: {fileID: 0}
+  playerBloodEventsScript: {fileID: 0}
+  collectableFollowScript: {fileID: 0}
 --- !u!1 &236979312
 GameObject:
   m_ObjectHideFlags: 0
@@ -62378,7 +62383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353406446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7431124, y: -0.4892437, z: 12.733462}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
