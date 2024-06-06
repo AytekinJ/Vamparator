@@ -27,7 +27,6 @@ public class CollectableFollow : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.layer + " " + LayerMask.NameToLayer("Player"));
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) 
         {
             isTouched = true;

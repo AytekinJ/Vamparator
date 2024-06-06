@@ -1,118 +1,184 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine;
 
 public class UpgradeInfoScript : MonoBehaviour
 {
-    public Text UpgradeText1;
-    public Text UpgradeText2;
-    public Text UpgradeText3;
+    [SerializeField] public Text UpgradeText1;
+    [SerializeField] public Text UpgradeText2;
 
-    public Button UpgradeBtn1;
-    public Button UpgradeBtn2;
-    public Button UpgradeBtn3;
+    [SerializeField] public Button UpgradeBtn1;
+    [SerializeField] public Button UpgradeBtn2;
 
-    public string Upgrade1InfoText;
-    public string Upgrade2InfoText;
-    public string Upgrade3InfoText;
+    [SerializeField] public Image UpgradeImage1;
+    [SerializeField] public Image UpgradeImage2;
 
-    public EnemyMeleeAttack meleeAttackScript;
-    public EnemySpawn enemySpawnScript;
-    public CircleCollider2D KANCOLLIDERI;
-    public PlayerBloodEvents playerBloodEventsScript;
-    public CollectableFollow collectableFollowScript;
+    [SerializeField] public string Upgrade1InfoText;
+    [SerializeField] public string Upgrade2InfoText;
 
-    public Sprite commonDamage;
-    public Sprite commonFireRate;
-    public Sprite commonBlood;
-    public Sprite commonRange;
-    public Sprite commonPickupRange;
-    public Sprite rareDamage;
-    public Sprite rareFireRate;
-    public Sprite rareBlood;
-    public Sprite rareRange;
-    public Sprite rarePickupRange;
+    [SerializeField] public EnemyMeleeAttack meleeAttackScript;
+    [SerializeField] public EnemySpawn enemySpawnScript;
+    [SerializeField] public CircleCollider2D KANCOLLIDERI;
+    [SerializeField] public PlayerBloodEvents playerBloodEventsScript;
+    [SerializeField] public CollectableFollow collectableFollowScript;
+
+    [SerializeField] public Sprite commonDamage;
+    [SerializeField] public Sprite commonFireRate;
+    [SerializeField] public Sprite commonBlood;
+    [SerializeField] public Sprite commonRange;
+    [SerializeField] public Sprite commonPickupRange;
+    [SerializeField] public Sprite rareDamage;
+    [SerializeField] public Sprite rareFireRate;
+    [SerializeField] public Sprite rareBlood;
+    [SerializeField] public Sprite rareRange;
+    [SerializeField] public Sprite rarePickupRange;
+
+    private Sprite[] rare;
+    private Sprite[] common;
+
+    private void Awake()
+    {
+        rare = new Sprite[] { rareDamage, rareFireRate, rareBlood, rareRange, rarePickupRange };
+        common = new Sprite[] { commonDamage, commonFireRate, commonBlood, commonRange, commonPickupRange };
+        collectableFollowScript.healMultipler = 1;
+        KANCOLLIDERI.radius = 1;
+        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
+        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
+        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
+        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
+        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
+    }
 
     public void RandomizeValues()
     {
-        //SetByNumbers(UpgradeBtn1, UpgradeText1, Random.Range(1, 4));
-        //SetByNumbers(UpgradeBtn2, UpgradeText2, Random.Range(1, 4));
-        //SetByNumbers(UpgradeBtn3, UpgradeText3, Random.Range(1, 4));
+        SetByNumbers(UpgradeBtn1, UpgradeText1, UpgradeImage1, Random.Range(1, 3), Random.Range(0, 5));
+        SetByNumbers(UpgradeBtn2, UpgradeText2, UpgradeImage2, Random.Range(1, 3), Random.Range(0, 5));
     }
 
-    void SetByNumbers(Button button, Text text, int number,int spriteNumber)
+    void SetByNumbers(Button button, Text text, Image image, int number, int spriteNumber)
     {
+        if (button == null)
+        {
+            Debug.LogError("Button is null");
+            return;
+        }
+
+        if (text == null)
+        {
+            Debug.LogError("Text is null");
+            return;
+        }
+
+        if (image == null)
+        {
+            Debug.LogError("Image is null");
+            return;
+        }
+
         button.onClick.RemoveAllListeners();
 
         if (number == 1)
         {
-            button.onClick.AddListener(Common);
             text.text = Upgrade1InfoText;
+            image.sprite = common[spriteNumber];
+            button.onClick.AddListener(() => Common(common[spriteNumber]));
         }
         else if (number == 2)
         {
-            button.onClick.AddListener(Rare);
             text.text = Upgrade2InfoText;
+            image.sprite = rare[spriteNumber];
+            button.onClick.AddListener(() => Rare(rare[spriteNumber]));
         }
-        else if (number == 3)
+    }
+
+    void Common(Sprite sprite)
+    {
+        if (sprite == commonDamage)
         {
-            button.onClick.AddListener(Epic);
-            text.text = Upgrade3InfoText;
+            UpgradeDamage(2.5f);
         }
+        else if (sprite == commonFireRate)
+        {
+            UpgradefireRate(0.1f);
+        }
+        else if (sprite == commonBlood)
+        {
+            UpgradeKanArtisHizi(0.2f);
+        }
+        else if (sprite == commonRange)
+        {
+            UpgradeMermiMenzil(1.5f);
+        }
+        else if (sprite == commonPickupRange)
+        {
+            UpgradeToplamaMenzil(0.2f);
+        }
+        Debug.Log("Common: " + sprite.name);
+        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
+        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
+        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
+        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
+        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
     }
 
-
-    void Common()
+    void Rare(Sprite sprite)
     {
-        UpgradefireRate(1.5f);
-        UpgradeDamage(1.5f);
-        UpgradeMermiMenzil(1.5f);
-        UpgradeToplamaMenzil(1.25f);
-        UpgradeKanArtisHizi(1.25f);
-        Debug.Log("Common");
+        if (sprite == rareDamage)
+        {
+            UpgradeDamage(5f);
+        }
+        else if (sprite == rareFireRate)
+        {
+            UpgradefireRate(0.25f);
+        }
+        else if (sprite == rareBlood)
+        {
+            UpgradeKanArtisHizi(0.4f);
+        }
+        else if (sprite == rareRange)
+        {
+            UpgradeMermiMenzil(3f);
+        }
+        else if (sprite == rarePickupRange)
+        {
+            UpgradeToplamaMenzil(0.35f);
+        }
+        Debug.Log("Rare: " + sprite.name);
+        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
+        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
+        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
+        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
+        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
     }
-
-    void Rare()
-    {
-        UpgradefireRate(2f);
-        UpgradeDamage(2f);
-        UpgradeMermiMenzil(2f);
-        UpgradeToplamaMenzil(2f);
-        UpgradeKanArtisHizi(2f);
-        Debug.Log("Rare");
-    }
-
-    void Epic()
-    {
-
-        Debug.Log("Epic");
-    }
-
 
     void UpgradefireRate(float MultiplicationValue)
     {
-        meleeAttackScript.shootDelay = meleeAttackScript.shootDelay - (meleeAttackScript.shootDelay * MultiplicationValue) / 100;
+        if ((meleeAttackScript.shootDelay - MultiplicationValue) < 0.2f)
+        {
+            return;
+        }
+        else
+        meleeAttackScript.shootDelay -= MultiplicationValue;
     }
 
     void UpgradeDamage(float MultiplicationValue)
     {
-        enemySpawnScript.PlayerDamage = enemySpawnScript.PlayerDamage - (enemySpawnScript.PlayerDamage * MultiplicationValue) / 100;
+        enemySpawnScript.PlayerDamage += MultiplicationValue;
     }
 
     void UpgradeMermiMenzil(float MultiplicationValue)
     {
-        meleeAttackScript.MaxDistance = meleeAttackScript.MaxDistance - (meleeAttackScript.MaxDistance * MultiplicationValue) / 100;
+        meleeAttackScript.MaxDistance += MultiplicationValue;
     }
 
     void UpgradeToplamaMenzil(float MultiplicationValue)
     {
-        KANCOLLIDERI.radius = KANCOLLIDERI.radius - (KANCOLLIDERI.radius * MultiplicationValue) / 100;
+        KANCOLLIDERI.radius += MultiplicationValue;
     }
 
     void UpgradeKanArtisHizi(float MultiplicationValue)
     {
-        collectableFollowScript.healMultipler = collectableFollowScript.healMultipler - (collectableFollowScript.healMultipler * MultiplicationValue) / 100;
+        collectableFollowScript.healMultipler += MultiplicationValue;
     }
 }

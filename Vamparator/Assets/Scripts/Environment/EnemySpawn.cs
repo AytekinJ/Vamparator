@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.PlasticSCM.Editor.WebApi;
+#if UNITY_EDITOR
+using Unity.PlasticSCM;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,24 +59,22 @@ public class EnemySpawn : MonoBehaviour
         if (second >= 60)
         {
             minute++;
-            enemySpawnRate -= 0.05f;
-            MaxEnemyCount += 20;
-            attack.shootDelay -= 0.05f;
-            enemySpeed += 0.5f;
+            enemySpawnRate -= 0.03f;
+            MaxEnemyCount += 10;
+            enemySpeed += 0.35f;
             enemyDamage += 2;
-            enemyHealth += 5;
+            enemyHealth += 5f;
             StartCoroutine(textShow());
             increase = true;
         }
 
         if (second == 30 && increase)
         {
-            enemySpawnRate -= 0.05f;
-            MaxEnemyCount += 20;
-            attack.shootDelay -= 0.05f;
+            enemySpawnRate -= 0.02f;
+            MaxEnemyCount += 10;
             enemySpeed += 0.5f;
             enemyDamage += 2;
-            enemyHealth += 5;
+            enemyHealth += 2.5f;
             StartCoroutine(textShow());
             increase = false;
         }
@@ -97,7 +97,6 @@ public class EnemySpawn : MonoBehaviour
 
     private IEnumerator enemySpawn()
     {
-        Debug.Log(Time.deltaTime);
         _isWorking2 = true;
 
         while (_isWorking && CurrentEnemyCount < MaxEnemyCount)

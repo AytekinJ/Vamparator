@@ -35,8 +35,8 @@ namespace GM
 
         public void OpenUpgradePage()
         {
-            _upgradeInfoScript.RandomizeValues();
             UpgradePanel.SetActive(true);
+            _upgradeInfoScript.RandomizeValues();
             Time.timeScale = 0f;
         }
 

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+#endif
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float CharacterSpeed = 5f;
+    [SerializeField] public float CharacterSpeed = 5f;
     [SerializeField] private float isWalking;
     float RawVerticalInput;
     float RawHorizontalInput;
