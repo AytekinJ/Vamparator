@@ -77,14 +77,11 @@ public class PlayerBloodEvents : MonoBehaviour
     IEnumerator Dying()
     {
         animator.SetBool("isDead", true);
-        //gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-        //gameObject.transform.GetChild(0).GetComponent<CapsuleCollider2D>().enabled = true;
-        gameObject.GetComponent<PlayerMovement>().canMove = false;
+        movement.CharacterSpeed = 0;
         upgradePage.gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         dyingImage.SetActive(true);
         attack.enabled = false;
-        //movement.CharacterSpeed = 0;
         yield return new WaitForSeconds(2.5f);
         restartButton.SetActive(true);
     }

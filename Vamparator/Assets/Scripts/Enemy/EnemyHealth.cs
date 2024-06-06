@@ -45,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
 
                 GameManager.Score++;
 
-                animator.SetTrigger("isDied");
+                animator.SetBool("isDied", true);
                 gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
                 Destroy(gameObject, 1.1f);
             }
