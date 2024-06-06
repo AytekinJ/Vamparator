@@ -14,16 +14,21 @@ public class EnemyHealth : MonoBehaviour
     PlayerBloodEvents blood;
     EnemySpawn enemySpawn;
 
+    bool isDied;
+
+    Animator animator;
+
     private void Start()
     {
         blood = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBloodEvents>();
         enemySpawn = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
         enemyHealth = enemySpawn.enemyHealth;
         baseDamage = enemySpawn.PlayerDamage;
+        animator = GetComponent<Animator>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet") && !isDied)
         {
             Destroy(collision.gameObject);
             enemyHealth -= baseDamage;
@@ -40,7 +45,9 @@ public class EnemyHealth : MonoBehaviour
 
                 GameManager.Score++;
 
-                Destroy(gameObject);
+                animator.SetTrigger("isDied");
+                gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+                Destroy(gameObject, 1.1f);
             }
 
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
