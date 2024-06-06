@@ -33,10 +33,9 @@ public class EnemySpawn : MonoBehaviour
     [Space(10)]
     private bool _isWorking = true;
     private bool _isWorking2 = false;
-    private bool increase = true;
 
-    int minute;
-    int second;
+    int minute = 2;
+    int second = 59;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject RangedEnemyPrefab;
@@ -45,50 +44,13 @@ public class EnemySpawn : MonoBehaviour
 
     private void Start()
     {
-
         StartCoroutine(enemySpawn());
-        
+        StartCoroutine(timerVoid());
     }
 
 
     void Update()
     {
-        second = (int)Time.time;
-        second -= minute * 60;
-
-        if (second >= 60)
-        {
-            minute++;
-            enemySpawnRate -= 0.03f;
-            MaxEnemyCount += 10;
-            enemySpeed += 0.35f;
-            enemyDamage += 2;
-            enemyHealth += 5f;
-            StartCoroutine(textShow());
-            increase = true;
-        }
-
-        if (second == 30 && increase)
-        {
-            enemySpawnRate -= 0.02f;
-            MaxEnemyCount += 10;
-            enemySpeed += 0.5f;
-            enemyDamage += 2;
-            enemyHealth += 2.5f;
-            StartCoroutine(textShow());
-            increase = false;
-        }
-
-        if (second<10)
-        {
-            timer.text = minute + ":0" + second;
-        }
-        else
-        {
-            timer.text = minute + ":" + second;
-            timer.text = minute + ":" + second;
-        }
-
         if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2)
         {
             StartCoroutine(enemySpawn());
@@ -130,6 +92,43 @@ public class EnemySpawn : MonoBehaviour
             powerUpText.SetActive(false);
             yield return new WaitForSeconds(0.5f);
         }
+    }
+    IEnumerator timerVoid()
+    {
+        while (minute != 0 && second != 0)
+        {
+            second--;
+            if (second == 0)
+            {
+                second = 59;
+                minute--;
+                enemySpawnRate -= 0.1f;
+                MaxEnemyCount += 20;
+                enemySpeed += 0.35f;
+                enemyDamage += 3;
+                enemyHealth += 10f;
+                StartCoroutine(textShow());
+            }
+            if (second == 30)
+            {
+                enemySpawnRate -= 0.1f;
+                MaxEnemyCount += 20;
+                enemySpeed += 0.35f;
+                enemyDamage += 3;
+                enemyHealth += 10f;
+                StartCoroutine(textShow());
+            }
+            if (second < 10)
+            {
+                timer.text = minute + ":0" + second;
+            }
+            else
+            {
+                timer.text = minute + ":"+ second;
+            }
+            yield return new WaitForSeconds(1);
+        }
+        //oyun bitiþ kýsmý ayketincim.
     }
 
     public void DecreaseEnemyCount()

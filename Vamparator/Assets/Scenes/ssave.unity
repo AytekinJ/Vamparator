@@ -1459,7 +1459,7 @@ MonoBehaviour:
   enemySpeed: 2
   enemyDamage: 2
   PlayerDamage: 5
-  enemyHealth: 10
+  enemyHealth: 5
   EnemyRangedDamage: 3
   EnemyBulletOffsetMultipler: -1
   EnemyBulletRangeBySecond: 2
