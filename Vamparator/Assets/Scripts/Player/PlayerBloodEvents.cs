@@ -11,6 +11,10 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] public float decreaseRate = 0.5f;
     [SerializeField] Animation healingFadeAnim;
     [SerializeField] Animation RecieveDamageAnim;
+    [SerializeField] PlayerMovement movement;
+    [SerializeField] EnemyMeleeAttack attack;
+    [SerializeField] GameObject dyingImage;
+    [SerializeField] GameObject restartButton;
     private bool _isWorking = false;
 
     void Update()
@@ -27,6 +31,7 @@ public class PlayerBloodEvents : MonoBehaviour
         if ((bloodAmount -= decreaseAmount) < 0)
         {
             bloodAmount = 0;
+            StartCoroutine(Dying());
         }
         else
         {
@@ -57,5 +62,13 @@ public class PlayerBloodEvents : MonoBehaviour
         }
         yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
+    }
+    IEnumerator Dying()
+    {
+        dyingImage.SetActive(true);
+        attack.enabled = false;
+        movement.CharacterSpeed = 0;
+        yield return new WaitForSeconds(2.5f);
+        restartButton.SetActive(true);
     }
 }

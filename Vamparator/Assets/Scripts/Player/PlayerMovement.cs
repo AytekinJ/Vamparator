@@ -5,7 +5,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float CharacterSpeed = 5f;
+    [SerializeField] public float CharacterSpeed = 5f;
     [SerializeField] private float isWalking;
     float RawVerticalInput;
     float RawHorizontalInput;
