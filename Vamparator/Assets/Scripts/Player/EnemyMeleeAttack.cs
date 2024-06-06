@@ -49,12 +49,16 @@ public class EnemyMeleeAttack : MonoBehaviour
         if (Time.time > lastTimeShooted + shootDelay)
         {
             Vector3 targetPosRot = transform.position - targetEnemy.transform.position;
-            Vector2 rotation = transform.position - targetEnemy.transform.position;
-            Quaternion rot = Quaternion.LookRotation(rotation);
-            rot.eulerAngles = new Vector3(0f, 0f, rot.eulerAngles.y+rot.eulerAngles.x);
-            GameObject bullet = Instantiate(BulletPrefab,transform.position+targetPosRot.normalized*offsetMultipler,rot);
+
+            Vector2 direction = (transform.position - targetEnemy.transform.position).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion lookRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            GameObject bullet = Instantiate(BulletPrefab, transform.position + targetPosRot.normalized * offsetMultipler, lookRotation);
             Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
+
             bulletrb.velocity = targetPosRot.normalized * bulletSpeed;
+
             Destroy(bullet, bulletRangeBySecond);
             lastTimeShooted = Time.time;
             animator.SetTrigger("Shoot");

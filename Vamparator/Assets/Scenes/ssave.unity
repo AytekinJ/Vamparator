@@ -2198,7 +2198,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -62317,7 +62317,7 @@ Tilemap:
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
-  m_Color: {r: 0.7359455, g: 1, b: 0.495283, a: 0.89411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -45, y: -31, z: 0}
   m_Size: {x: 87, y: 69, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
@@ -62930,7 +62930,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   BulletPrefab: {fileID: 9043454034506786666, guid: 6d154337376185043901cd786969bebe,
     type: 3}
-  bulletSpeed: -10
+  bulletSpeed: -25
   bulletRangeBySecond: 0.5
   shootDelay: 1
   lastTimeShooted: 0
