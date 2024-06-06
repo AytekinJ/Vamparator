@@ -60,6 +60,10 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount -= decreaseAmount;
         }
+        else
+        {
+            StartCoroutine(Dying());
+        }
         yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
     }
