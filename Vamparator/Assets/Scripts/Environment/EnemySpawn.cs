@@ -106,7 +106,7 @@ public class EnemySpawn : MonoBehaviour
             float xOffset = playerPosition.position.x + (randomSign * enemySpawnOffset);
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
-            float random = Random.Range(0, 3);
+            float random = Random.Range(0, 6);
             if (random == 1)
             {
                 Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
