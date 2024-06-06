@@ -44,7 +44,8 @@ public class EnemyHealth : MonoBehaviour
             }
 
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
-            GameObject effect = Instantiate(hitEffect,transform.position,Quaternion.identity);
+            Vector3 instantiatePos = new Vector3(transform.position.x,transform.position.y,-2);
+            GameObject effect = Instantiate(hitEffect,instantiatePos,Quaternion.identity);
             Destroy(effect,1);
         }
         
