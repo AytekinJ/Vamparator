@@ -37,9 +37,9 @@ public class UpgradeInfoScript : MonoBehaviour
 
     public void RandomizeValues()
     {
-        SetByNumbers(UpgradeBtn1, UpgradeText1, Random.Range(1, 4));
-        SetByNumbers(UpgradeBtn2, UpgradeText2, Random.Range(1, 4));
-        SetByNumbers(UpgradeBtn3, UpgradeText3, Random.Range(1, 4));
+        //SetByNumbers(UpgradeBtn1, UpgradeText1, Random.Range(1, 4));
+        //SetByNumbers(UpgradeBtn2, UpgradeText2, Random.Range(1, 4));
+        //SetByNumbers(UpgradeBtn3, UpgradeText3, Random.Range(1, 4));
     }
 
     void SetByNumbers(Button button, Text text, int number,int spriteNumber)

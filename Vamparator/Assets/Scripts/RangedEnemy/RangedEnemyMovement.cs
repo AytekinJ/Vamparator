@@ -10,12 +10,16 @@ public class RangedEnemyMovement : MonoBehaviour
     EnemySpawn es;
     Rigidbody2D rb;
     float lastTimeShooted;
+    SpriteRenderer spriteRenderer;
+    Animator animator;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -24,16 +28,21 @@ public class RangedEnemyMovement : MonoBehaviour
         if (distance < 3)
         {
             rb.velocity = moveDirection * es.enemySpeed;
+            animator.SetBool("isWalking", true);
         }
         else if (distance > 4)
         {
             rb.velocity = -moveDirection * es.enemySpeed;
+            animator.SetBool("isWalking", true);
         }
         else
         {
             rb.velocity = Vector2.zero;
+            animator.SetBool("isWalking", false);
         }
         Shoot();
+
+        spriteRenderer.flipX = rb.velocity.x < 0 ? true : false;
     }
 
     private void MovePositionSet()
