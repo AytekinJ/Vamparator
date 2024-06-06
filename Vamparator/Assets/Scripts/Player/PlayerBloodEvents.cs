@@ -58,12 +58,12 @@ public class PlayerBloodEvents : MonoBehaviour
         yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
-        {
-            Destroy(collision.gameObject);
-            decrease(es.enemyRangedDamage);
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
+    //    {
+    //        Destroy(collision.gameObject);
+    //        decrease(es.enemyRangedDamage);
+    //    }
+    //}
 }
