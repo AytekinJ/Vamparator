@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class UpgradeInfoScript : MonoBehaviour
 {
-    public TMP_Text UpgradeText1;
-    public TMP_Text UpgradeText2;
-    public TMP_Text UpgradeText3;
+    public Text UpgradeText1;
+    public Text UpgradeText2;
+    public Text UpgradeText3;
 
     public Button UpgradeBtn1;
     public Button UpgradeBtn2;
