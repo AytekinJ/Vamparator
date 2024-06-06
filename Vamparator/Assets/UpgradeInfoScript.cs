@@ -24,6 +24,17 @@ public class UpgradeInfoScript : MonoBehaviour
     public PlayerBloodEvents playerBloodEventsScript;
     public CollectableFollow collectableFollowScript;
 
+    public Sprite commonDamage;
+    public Sprite commonFireRate;
+    public Sprite commonBlood;
+    public Sprite commonRange;
+    public Sprite commonPickupRange;
+    public Sprite rareDamage;
+    public Sprite rareFireRate;
+    public Sprite rareBlood;
+    public Sprite rareRange;
+    public Sprite rarePickupRange;
+
     public void RandomizeValues()
     {
         SetByNumbers(UpgradeBtn1, UpgradeText1, Random.Range(1, 4));
@@ -31,7 +42,7 @@ public class UpgradeInfoScript : MonoBehaviour
         SetByNumbers(UpgradeBtn3, UpgradeText3, Random.Range(1, 4));
     }
 
-    void SetByNumbers(Button button, TMP_Text text, int number)
+    void SetByNumbers(Button button, Text text, int number,int spriteNumber)
     {
         button.onClick.RemoveAllListeners();
 
@@ -65,7 +76,11 @@ public class UpgradeInfoScript : MonoBehaviour
 
     void Rare()
     {
-
+        UpgradefireRate(2f);
+        UpgradeDamage(2f);
+        UpgradeMermiMenzil(2f);
+        UpgradeToplamaMenzil(2f);
+        UpgradeKanArtisHizi(2f);
         Debug.Log("Rare");
     }
 
