@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.PlasticSCM.Editor.WebApi;
+#if UNITY_EDITOR
+using Unity.PlasticSCM;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
