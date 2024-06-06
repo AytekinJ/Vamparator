@@ -99,23 +99,23 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == commonDamage)
         {
-            UpgradeDamage(1.5f);
+            UpgradeDamage(3f);
         }
         else if (sprite == commonFireRate)
         {
-            UpgradefireRate(1.5f);
+            UpgradefireRate(3f);
         }
         else if (sprite == commonBlood)
         {
-            UpgradeKanArtisHizi(1.25f);
+            UpgradeKanArtisHizi(2.5f);
         }
         else if (sprite == commonRange)
         {
-            UpgradeMermiMenzil(1.5f);
+            UpgradeMermiMenzil(3f);
         }
         else if (sprite == commonPickupRange)
         {
-            UpgradeToplamaMenzil(1.25f);
+            UpgradeToplamaMenzil(2.5f);
         }
         Debug.Log("Common: " + sprite.name);
     }
@@ -124,23 +124,23 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == rareDamage)
         {
-            UpgradeDamage(2f);
+            UpgradeDamage(5f);
         }
         else if (sprite == rareFireRate)
         {
-            UpgradefireRate(2f);
+            UpgradefireRate(5f);
         }
         else if (sprite == rareBlood)
         {
-            UpgradeKanArtisHizi(2f);
+            UpgradeKanArtisHizi(5f);
         }
         else if (sprite == rareRange)
         {
-            UpgradeMermiMenzil(2f);
+            UpgradeMermiMenzil(5f);
         }
         else if (sprite == rarePickupRange)
         {
-            UpgradeToplamaMenzil(2f);
+            UpgradeToplamaMenzil(5f);
         }
         Debug.Log("Rare: " + sprite.name);
     }
