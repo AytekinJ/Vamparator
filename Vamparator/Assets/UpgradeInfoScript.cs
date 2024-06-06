@@ -99,23 +99,23 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == commonDamage)
         {
-            UpgradeDamage(3f);
+            UpgradeDamage(1.5f);
         }
         else if (sprite == commonFireRate)
         {
-            UpgradefireRate(3f);
+            UpgradefireRate(0.2f);
         }
         else if (sprite == commonBlood)
         {
-            UpgradeKanArtisHizi(2.5f);
+            UpgradeKanArtisHizi(1.5f);
         }
         else if (sprite == commonRange)
         {
-            UpgradeMermiMenzil(3f);
+            UpgradeMermiMenzil(1.5f);
         }
         else if (sprite == commonPickupRange)
         {
-            UpgradeToplamaMenzil(2.5f);
+            UpgradeToplamaMenzil(1.5f);
         }
         Debug.Log("Common: " + sprite.name);
     }
@@ -124,23 +124,23 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == rareDamage)
         {
-            UpgradeDamage(5f);
+            UpgradeDamage(2f);
         }
         else if (sprite == rareFireRate)
         {
-            UpgradefireRate(5f);
+            UpgradefireRate(2f);
         }
         else if (sprite == rareBlood)
         {
-            UpgradeKanArtisHizi(5f);
+            UpgradeKanArtisHizi(2f);
         }
         else if (sprite == rareRange)
         {
-            UpgradeMermiMenzil(5f);
+            UpgradeMermiMenzil(2f);
         }
         else if (sprite == rarePickupRange)
         {
-            UpgradeToplamaMenzil(5f);
+            UpgradeToplamaMenzil(2f);
         }
         Debug.Log("Rare: " + sprite.name);
     }
@@ -152,26 +152,26 @@ public class UpgradeInfoScript : MonoBehaviour
 
     void UpgradefireRate(float MultiplicationValue)
     {
-        meleeAttackScript.shootDelay = meleeAttackScript.shootDelay - (meleeAttackScript.shootDelay * MultiplicationValue) / 100;
+        meleeAttackScript.shootDelay -= MultiplicationValue;
     }
 
     void UpgradeDamage(float MultiplicationValue)
     {
-        enemySpawnScript.PlayerDamage = enemySpawnScript.PlayerDamage - (enemySpawnScript.PlayerDamage * MultiplicationValue) / 100;
+        enemySpawnScript.PlayerDamage *= MultiplicationValue;
     }
 
     void UpgradeMermiMenzil(float MultiplicationValue)
     {
-        meleeAttackScript.MaxDistance = meleeAttackScript.MaxDistance - (meleeAttackScript.MaxDistance * MultiplicationValue) / 100;
+        meleeAttackScript.MaxDistance *= MultiplicationValue;
     }
 
     void UpgradeToplamaMenzil(float MultiplicationValue)
     {
-        KANCOLLIDERI.radius = KANCOLLIDERI.radius - (KANCOLLIDERI.radius * MultiplicationValue) / 100;
+        KANCOLLIDERI.radius *= MultiplicationValue;
     }
 
     void UpgradeKanArtisHizi(float MultiplicationValue)
     {
-        collectableFollowScript.healMultipler = collectableFollowScript.healMultipler - (collectableFollowScript.healMultipler * MultiplicationValue) / 100;
+        collectableFollowScript.healMultipler *= MultiplicationValue;
     }
 }

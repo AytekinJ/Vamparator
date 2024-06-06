@@ -57,24 +57,24 @@ public class EnemySpawn : MonoBehaviour
         if (second >= 60)
         {
             minute++;
-            enemySpawnRate -= 0.05f;
-            MaxEnemyCount += 20;
+            enemySpawnRate -= 0.02f;
+            MaxEnemyCount += 10;
             attack.shootDelay -= 0.05f;
             enemySpeed += 0.5f;
             enemyDamage += 2;
-            enemyHealth += 5;
+            enemyHealth += 2.5f;
             StartCoroutine(textShow());
             increase = true;
         }
 
         if (second == 30 && increase)
         {
-            enemySpawnRate -= 0.05f;
-            MaxEnemyCount += 20;
+            enemySpawnRate -= 0.02f;
+            MaxEnemyCount += 10;
             attack.shootDelay -= 0.05f;
             enemySpeed += 0.5f;
             enemyDamage += 2;
-            enemyHealth += 5;
+            enemyHealth += 2.5f;
             StartCoroutine(textShow());
             increase = false;
         }

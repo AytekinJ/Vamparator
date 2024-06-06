@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &145077060
 RectTransform:
   m_ObjectHideFlags: 0
@@ -282,9 +282,9 @@ MonoBehaviour:
   UpgradeImage1: {fileID: 627321238}
   UpgradeImage2: {fileID: 2062201828}
   UpgradeImage3: {fileID: 1313238357}
-  Upgrade1InfoText: sik
-  Upgrade2InfoText: kafali
-  Upgrade3InfoText: "u\u015Fak"
+  Upgrade1InfoText: ' Common'
+  Upgrade2InfoText: Rare
+  Upgrade3InfoText: Epic (!)
   meleeAttackScript: {fileID: 1658838655}
   enemySpawnScript: {fileID: 1271089595}
   KANCOLLIDERI: {fileID: 5146286476997193137, guid: 4f3088e361813b942ad7f9d300f4bf70,

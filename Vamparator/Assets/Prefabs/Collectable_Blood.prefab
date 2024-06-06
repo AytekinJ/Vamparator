@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
-  healMultipler: 5
+  healMultipler: 4.9
   smooth: 0.2
 --- !u!58 &5146286476997193137
 CircleCollider2D:
@@ -120,7 +120,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.490335
+  m_Radius: 2.98067
 --- !u!50 &3378645355823878142
 Rigidbody2D:
   serializedVersion: 4
