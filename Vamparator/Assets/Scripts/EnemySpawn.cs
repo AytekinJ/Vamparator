@@ -38,6 +38,7 @@ public class EnemySpawn : MonoBehaviour
     [Header("Prefab")]
     [SerializeField] public GameObject enemyBullet;
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject RangedEnemyPrefab;
     private void Start()
     {
 
@@ -95,7 +96,15 @@ public class EnemySpawn : MonoBehaviour
             float xOffset = playerPosition.position.x + (randomSign * enemySpawnOffset);
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
-            Instantiate(enemyPrefab, new Vector2(xOffset,yOffset), Quaternion.identity);
+            float random = Random.Range(0, 2);
+            if (random == 1)
+            {
+                Instantiate(enemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+            }
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
         }
