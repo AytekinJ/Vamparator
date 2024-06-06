@@ -13,13 +13,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private float enemySpawnOffset = 20;
     [SerializeField] public float enemySpeed = 2;
     [SerializeField] public float enemyDamage = 5;
-    [SerializeField] public float enemyRangedDamage = 3;
     [SerializeField] public float PlayerDamage = 1;
     [SerializeField] public float enemyHealth = 2;
-    [SerializeField] public float EnemyBulletOffsetMultipler;
-    [SerializeField] public float EnemyBulletRangeBySecond = 1f;
-    [SerializeField] public float EnemyBulletSpeed = -10.0f;
-    [SerializeField] public float EnemyShootDelay = 1f;
     [Space(10)]
     [Header("Real Time Values")]
     [SerializeField] public int CurrentEnemyCount = 0;
@@ -36,19 +31,22 @@ public class EnemySpawn : MonoBehaviour
     int minute;
     int second;
     [Header("Prefab")]
-    [SerializeField] public GameObject enemyBullet;
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject RangedEnemyPrefab;
+
+
     private void Start()
     {
 
         StartCoroutine(enemySpawn());
         
     }
-    private void Update()
+
+
+    void Update()
     {
         second = (int)Time.time;
         second -= minute * 60;
+
         if (second >= 60)
         {
             minute++;
@@ -61,6 +59,7 @@ public class EnemySpawn : MonoBehaviour
             StartCoroutine(textShow());
             increase = true;
         }
+
         if (second == 30 && increase)
         {
             enemySpawnRate -= 0.05f;
@@ -72,6 +71,7 @@ public class EnemySpawn : MonoBehaviour
             StartCoroutine(textShow());
             increase = false;
         }
+
         if (second<10)
         {
             timer.text = minute + ":0" + second;
@@ -81,35 +81,32 @@ public class EnemySpawn : MonoBehaviour
             timer.text = minute + ":" + second;
             timer.text = minute + ":" + second;
         }
+
         if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2)
         {
             StartCoroutine(enemySpawn());
         }
     }
+
     private IEnumerator enemySpawn()
     {
         Debug.Log(Time.deltaTime);
         _isWorking2 = true;
+
         while (_isWorking && CurrentEnemyCount < MaxEnemyCount)
         {
             float randomSign = Random.value < 0.5f ? -1f : 1f;
             float xOffset = playerPosition.position.x + (randomSign * enemySpawnOffset);
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
-            float random = Random.Range(0, 2);
-            if (random == 1)
-            {
-                Instantiate(enemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
-            }
+            Instantiate(enemyPrefab, new Vector2(xOffset,yOffset), Quaternion.identity);
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
         }
+
         _isWorking2 = false;
     }
+
     IEnumerator textShow()
     {
         for (int i = 0; i < 5; i++)
@@ -120,6 +117,7 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
     }
+
     public void DecreaseEnemyCount()
     {
         CurrentEnemyCount--;

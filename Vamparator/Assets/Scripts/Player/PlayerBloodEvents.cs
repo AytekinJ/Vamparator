@@ -9,13 +9,10 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] Image blood;
     [SerializeField] float decreaseAmount = 5;
     [SerializeField] float decreaseRate = 0.5f;
-    [SerializeField] Animation healingFade;
-    EnemySpawn es;
+    [SerializeField] Animation healingFadeAnim;
+    [SerializeField] Animation RecieveDamageAnim;
     private bool _isWorking = false;
-    void Start()
-    {
-        es = GameObject.FindGameObjectWithTag("GameController").GetComponent<EnemySpawn>();
-    }
+
     void Update()
     {
         blood.fillAmount = bloodAmount/100;
@@ -35,7 +32,9 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount -= decreaseAmount;
         }
+        RecieveDamageAnim.Play();
     }
+
     public void increase(float increaseAmount)
     {
         if ((bloodAmount+=increaseAmount) > 100)
@@ -46,8 +45,9 @@ public class PlayerBloodEvents : MonoBehaviour
         {
             bloodAmount += increaseAmount;
         }
-        healingFade.Play();
+        healingFadeAnim.Play();
     }
+
     IEnumerator bloodDecrease()
     {
         _isWorking = true;
@@ -58,12 +58,4 @@ public class PlayerBloodEvents : MonoBehaviour
         yield return new WaitForSeconds(decreaseRate);
         _isWorking=false;
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyBullet"))
-    //    {
-    //        Destroy(collision.gameObject);
-    //        decrease(es.enemyRangedDamage);
-    //    }
-    //}
 }
