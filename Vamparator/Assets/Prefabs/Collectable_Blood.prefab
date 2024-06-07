@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
-  healMultipler: 1.4
+  healMultipler: 3
   smooth: 0.2
 --- !u!58 &5146286476997193137
 CircleCollider2D:
