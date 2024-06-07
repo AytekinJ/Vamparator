@@ -34,8 +34,8 @@ public class EnemySpawn : MonoBehaviour
     private bool _isWorking = true;
     private bool _isWorking2 = false;
 
-    int minute = 0;
-    int second = 10;
+    int minute = 2;
+    int second = 59;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject RangedEnemyPrefab;
