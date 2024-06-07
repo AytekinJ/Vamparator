@@ -109,6 +109,7 @@ public class UpgradeInfoScript : MonoBehaviour
         {
             UpgradeToplamaMenzil(1f);
         }
+        playerBloodEventsScript.increase(30);
     }
 
     void Rare(Sprite sprite)
@@ -133,7 +134,7 @@ public class UpgradeInfoScript : MonoBehaviour
         {
             UpgradeToplamaMenzil(2f);
         }
-
+        playerBloodEventsScript.increase(30);
     }
 
     void UpgradefireRate(float MultiplicationValue)

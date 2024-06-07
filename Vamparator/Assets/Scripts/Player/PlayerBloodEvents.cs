@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerBloodEvents : MonoBehaviour
 {
-    [SerializeField] float bloodAmount = 50; // Max 100
+    [SerializeField] public float bloodAmount = 50; // Max 100
     [SerializeField] Image blood;
     [SerializeField] float decreaseAmount = 5;
     [SerializeField] public float decreaseRate = 0.5f;

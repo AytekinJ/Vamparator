@@ -112,9 +112,9 @@ public class EnemySpawn : MonoBehaviour
                 minute--;
                 enemySpawnRate -= 0.15f;
                 MaxEnemyCount += 50;
-                enemySpeed += 0.2f;
+                enemySpeed += 0.1f;
                 enemyDamage += 3;
-                enemyHealth += 15f;
+                enemyHealth += 10f;
                 gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
@@ -122,9 +122,9 @@ public class EnemySpawn : MonoBehaviour
             {
                 enemySpawnRate -= 0.15f;
                 MaxEnemyCount += 50;
-                enemySpeed += 0.2f;
+                enemySpeed += 0.1f;
                 enemyDamage += 3;
-                enemyHealth += 15f;
+                enemyHealth += 10f;
                 gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
