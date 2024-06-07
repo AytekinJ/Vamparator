@@ -9,7 +9,8 @@ namespace GM
     {
         public static int Score = 0;
 
-        public int CurrentNecessaryUpgradeCount = 2;
+        public int CurrentNecessaryUpgradeCount = 0;
+        public int upgradeNumber = 5;
 
         int hiddenScore = 0;
 
@@ -28,7 +29,7 @@ namespace GM
             if (hiddenScore >= CurrentNecessaryUpgradeCount)
             {
                 hiddenScore = 0;
-                CurrentNecessaryUpgradeCount += 5;
+                CurrentNecessaryUpgradeCount += upgradeNumber;
                 OpenUpgradePage();
             }
         }

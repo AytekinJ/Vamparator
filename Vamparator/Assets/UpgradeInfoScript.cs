@@ -47,8 +47,8 @@ public class UpgradeInfoScript : MonoBehaviour
 
     public void RandomizeValues()
     {
-        SetByNumbers(UpgradeBtn1, UpgradeText1, UpgradeImage1, Random.Range(1, 3), Random.Range(0, 5));
-        SetByNumbers(UpgradeBtn2, UpgradeText2, UpgradeImage2, Random.Range(1, 3), Random.Range(0, 5));
+        SetByNumbers(UpgradeBtn1, UpgradeText1, UpgradeImage1, Random.Range(1, 5), Random.Range(0, 5));
+        SetByNumbers(UpgradeBtn2, UpgradeText2, UpgradeImage2, Random.Range(1, 5), Random.Range(0, 5));
     }
 
     void SetByNumbers(Button button, Text text, Image image, int number, int spriteNumber)
@@ -138,9 +138,9 @@ public class UpgradeInfoScript : MonoBehaviour
 
     void UpgradefireRate(float MultiplicationValue)
     {
-        if ((meleeAttackScript.shootDelay - MultiplicationValue) < 0f)
+        if ((meleeAttackScript.shootDelay - MultiplicationValue) < 0.2f)
         {
-            meleeAttackScript.shootDelay = 0.1f;
+            meleeAttackScript.shootDelay = 0.2f;
             return;
         }
         else

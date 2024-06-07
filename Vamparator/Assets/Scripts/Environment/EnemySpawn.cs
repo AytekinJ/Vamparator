@@ -7,6 +7,7 @@ using Unity.PlasticSCM;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GM;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] GameObject[] enemyTransforms;
     [SerializeField] Text timer;
     [SerializeField] GameObject powerUpText;
+    [SerializeField] GameManager gm;
     [Space(10)]
     private bool _isWorking = true;
     private bool _isWorking2 = false;
@@ -113,6 +115,7 @@ public class EnemySpawn : MonoBehaviour
                 enemySpeed += 0.2f;
                 enemyDamage += 3;
                 enemyHealth += 15f;
+                gm.upgradeNumber += 5;
                 StartCoroutine(textShow());
             }
             if (second == 30)
@@ -122,6 +125,7 @@ public class EnemySpawn : MonoBehaviour
                 enemySpeed += 0.2f;
                 enemyDamage += 3;
                 enemyHealth += 15f;
+                gm.upgradeNumber += 5;
                 StartCoroutine(textShow());
             }
             if (second < 10)
