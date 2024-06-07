@@ -73,17 +73,17 @@ public class UpgradeInfoScript : MonoBehaviour
 
         button.onClick.RemoveAllListeners();
 
-        if (number == 1)
-        {
-            text.text = Upgrade1InfoText;
-            image.sprite = common[spriteNumber];
-            button.onClick.AddListener(() => Common(common[spriteNumber]));
-        }
-        else if (number == 2)
+        if (number == 2)
         {
             text.text = Upgrade2InfoText;
             image.sprite = rare[spriteNumber];
             button.onClick.AddListener(() => Rare(rare[spriteNumber]));
+        }
+        else
+        {
+            text.text = Upgrade1InfoText;
+            image.sprite = common[spriteNumber];
+            button.onClick.AddListener(() => Common(common[spriteNumber]));
         }
     }
 
