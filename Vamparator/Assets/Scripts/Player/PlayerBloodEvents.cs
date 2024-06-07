@@ -17,6 +17,7 @@ public class PlayerBloodEvents : MonoBehaviour
     [SerializeField] GameObject restartButton;
     [SerializeField] GameObject upgradePage;
     [SerializeField] EnemySpawn es;
+    [SerializeField] GameObject joystik;
 
     Animator animator;
     private bool _isWorking = false;
@@ -78,6 +79,7 @@ public class PlayerBloodEvents : MonoBehaviour
     IEnumerator Dying()
     {
         es.isDied = true;
+        joystik.SetActive(false);
         animator.SetBool("isDead", true);
         movement.CharacterSpeed = 0;
         upgradePage.gameObject.SetActive(false);
