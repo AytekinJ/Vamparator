@@ -133,18 +133,14 @@ public class UpgradeInfoScript : MonoBehaviour
         {
             UpgradeToplamaMenzil(2f);
         }
-        Debug.Log("Rare: " + sprite.name);
-        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
-        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
-        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
-        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
-        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
+
     }
 
     void UpgradefireRate(float MultiplicationValue)
     {
-        if ((meleeAttackScript.shootDelay - MultiplicationValue) < 0.2f)
+        if ((meleeAttackScript.shootDelay - MultiplicationValue) < 0f)
         {
+            meleeAttackScript.shootDelay = 0.1f;
             return;
         }
         else

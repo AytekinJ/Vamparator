@@ -97,27 +97,27 @@ public class EnemySpawn : MonoBehaviour
     }
     IEnumerator timerVoid()
     {
-        while (minute != 0 && second != 0)
+        while (true)
         {
             second--;
-            if (second == 0)
+            if (second < 1 && minute > 0)
             {
                 second = 59;
                 minute--;
-                enemySpawnRate -= 0.1f;
-                MaxEnemyCount += 20;
-                enemySpeed += 0.35f;
+                enemySpawnRate -= 0.15f;
+                MaxEnemyCount += 50;
+                enemySpeed += 0.2f;
                 enemyDamage += 3;
-                enemyHealth += 10f;
+                enemyHealth += 15f;
                 StartCoroutine(textShow());
             }
             if (second == 30)
             {
-                enemySpawnRate -= 0.1f;
-                MaxEnemyCount += 20;
-                enemySpeed += 0.35f;
+                enemySpawnRate -= 0.15f;
+                MaxEnemyCount += 50;
+                enemySpeed += 0.2f;
                 enemyDamage += 3;
-                enemyHealth += 10f;
+                enemyHealth += 15f;
                 StartCoroutine(textShow());
             }
             if (second < 10)
@@ -128,12 +128,14 @@ public class EnemySpawn : MonoBehaviour
             {
                 timer.text = minute + ":"+ second;
             }
+            if (minute == 0 && second == 0)
+            {
+                playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
+                Debug.Log("Oyun bitti");
+            }
             yield return new WaitForSeconds(1);
         }
-
-        Debug.Log("Oyun bitti");
-        playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
         
         //oyun bitiþ kýsmý ayketincim.
     }
