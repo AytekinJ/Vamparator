@@ -6,6 +6,7 @@ using Unity.PlasticSCM;
 #endif
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -141,7 +142,11 @@ public class EnemySpawn : MonoBehaviour
                 {
                     Destroy(obj);
                 }
+                playerPosition.gameObject.GetComponent<PlayerMovement>().canMove = false;
+
                 Debug.Log("Oyun bitti");
+                yield return new WaitForSeconds(1f);
+                SceneManager.LoadScene(2);
             }
             yield return new WaitForSeconds(1);
         }
