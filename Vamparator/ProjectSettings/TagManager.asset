@@ -12,6 +12,7 @@ TagManager:
   - 5
   - Blood
   - EnemyBullet
+  - gamemanager
   layers:
   - Default
   - TransparentFX
