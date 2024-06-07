@@ -132,11 +132,11 @@ public class EnemySpawn : MonoBehaviour
             {
                 playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
                 Debug.Log("Oyun bitti");
             }
             yield return new WaitForSeconds(1);
         }
-        
         //oyun bitiþ kýsmý ayketincim.
     }
 
