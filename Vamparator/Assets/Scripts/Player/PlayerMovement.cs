@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] public float CharacterSpeed = 5f;
     [SerializeField] private float isWalking;
+    [SerializeField] public Joystick joystick;
     float RawVerticalInput;
     float RawHorizontalInput;
 
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        RawVerticalInput = Input.GetAxisRaw("Vertical");
-        RawHorizontalInput = Input.GetAxisRaw("Horizontal");
+        RawVerticalInput = joystick.Vertical;
+        RawHorizontalInput = joystick.Horizontal;
 
         isWalking = RawHorizontalInput != 0 || RawVerticalInput != 0 ? 1 : 0;
         animator.SetFloat("isWalking", isWalking);

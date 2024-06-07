@@ -45,6 +45,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] public GameObject enemyBullet;
 
     bool canSpawn = true;
+    public bool isDied = false;
 
 
     private void Start()
@@ -114,7 +115,7 @@ public class EnemySpawn : MonoBehaviour
                 MaxEnemyCount += 50;
                 enemySpeed += 0.1f;
                 enemyDamage += 3;
-                enemyHealth += 10f;
+                enemyHealth += 15f;
                 gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
@@ -124,7 +125,7 @@ public class EnemySpawn : MonoBehaviour
                 MaxEnemyCount += 50;
                 enemySpeed += 0.1f;
                 enemyDamage += 3;
-                enemyHealth += 10f;
+                enemyHealth += 15f;
                 gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
@@ -136,7 +137,7 @@ public class EnemySpawn : MonoBehaviour
             {
                 timer.text = minute + ":"+ second;
             }
-            if (minute == 0 && second == 0)
+            if (minute == 0 && second == 0 && !isDied)
             {
                 playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
