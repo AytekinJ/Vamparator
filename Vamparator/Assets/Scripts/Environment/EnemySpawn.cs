@@ -34,8 +34,8 @@ public class EnemySpawn : MonoBehaviour
     private bool _isWorking = true;
     private bool _isWorking2 = false;
 
-    int minute = 2;
-    int second = 59;
+    int minute = 0;
+    int second = 10;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject RangedEnemyPrefab;
@@ -53,7 +53,7 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2 && canSpawn == true)
+        if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2)
         {
             StartCoroutine(enemySpawn());
         }
@@ -70,13 +70,16 @@ public class EnemySpawn : MonoBehaviour
             float randomSignY = Random.value < 0.5f ? -1f : 1f;
             float yOffset = playerPosition.position.y + (randomSignY * enemySpawnOffset);
             float random = Random.Range(0, 6);
-            if (random == 3)
+            if (canSpawn)
             {
-                Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
-            }
-            else
-            {
-                Instantiate(enemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+                if (random == 3)
+                {
+                    Instantiate(RangedEnemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(enemyPrefab, new Vector2(xOffset, yOffset), Quaternion.identity);
+                }
             }
             CurrentEnemyCount++;
             yield return new WaitForSeconds(enemySpawnRate);
@@ -132,11 +135,16 @@ public class EnemySpawn : MonoBehaviour
             {
                 playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
+                GameObject[] objects = GameObject.FindGameObjectsWithTag("Enemy");
+                canSpawn = false;
+                foreach (GameObject obj in objects)
+                {
+                    Destroy(obj);
+                }
                 Debug.Log("Oyun bitti");
             }
             yield return new WaitForSeconds(1);
         }
-        
         //oyun bitiþ kýsmý ayketincim.
     }
 
