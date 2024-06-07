@@ -41,7 +41,7 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         rare = new Sprite[] { rareDamage, rareFireRate, rareBlood, rareRange, rarePickupRange };
         common = new Sprite[] { commonDamage, commonFireRate, commonBlood, commonRange, commonPickupRange };
-        collectableFollowScript.healMultipler = 1;
+        collectableFollowScript.healMultipler = 3;
         KANCOLLIDERI.radius = 1;
     }
 
@@ -91,15 +91,15 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == commonDamage)
         {
-            UpgradeDamage(2.5f);
+            UpgradeDamage(4f);
         }
         else if (sprite == commonFireRate)
         {
-            UpgradefireRate(0.1f);
+            UpgradefireRate(0.2f);
         }
         else if (sprite == commonBlood)
         {
-            UpgradeKanArtisHizi(0.2f);
+            UpgradeKanArtisHizi(0.5f);
         }
         else if (sprite == commonRange)
         {
@@ -107,7 +107,7 @@ public class UpgradeInfoScript : MonoBehaviour
         }
         else if (sprite == commonPickupRange)
         {
-            UpgradeToplamaMenzil(0.2f);
+            UpgradeToplamaMenzil(1f);
         }
     }
 
@@ -115,15 +115,15 @@ public class UpgradeInfoScript : MonoBehaviour
     {
         if (sprite == rareDamage)
         {
-            UpgradeDamage(5f);
+            UpgradeDamage(7f);
         }
         else if (sprite == rareFireRate)
         {
-            UpgradefireRate(0.25f);
+            UpgradefireRate(0.3f);
         }
         else if (sprite == rareBlood)
         {
-            UpgradeKanArtisHizi(0.4f);
+            UpgradeKanArtisHizi(1f);
         }
         else if (sprite == rareRange)
         {
@@ -131,7 +131,7 @@ public class UpgradeInfoScript : MonoBehaviour
         }
         else if (sprite == rarePickupRange)
         {
-            UpgradeToplamaMenzil(0.35f);
+            UpgradeToplamaMenzil(2f);
         }
         Debug.Log("Rare: " + sprite.name);
         Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);

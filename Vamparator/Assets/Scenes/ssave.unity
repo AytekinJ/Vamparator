@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d520e513d03b8b43942b7983485ed16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentNecessaryUpgradeCount: 2
+  CurrentNecessaryUpgradeCount: 0
   UpgradePanel: {fileID: 145077059}
 --- !u!4 &1353406448
 Transform:
@@ -29066,9 +29066,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8ad679fe89a574fab373e7f6204237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodAmount: 50
+  bloodAmount: 75
   blood: {fileID: 391316888}
-  decreaseAmount: 2.5
+  decreaseAmount: 1.5
   decreaseRate: 1
   healingFadeAnim: {fileID: 549607157}
   RecieveDamageAnim: {fileID: 1579855540}

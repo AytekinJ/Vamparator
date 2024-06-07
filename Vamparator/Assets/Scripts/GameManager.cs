@@ -28,7 +28,7 @@ namespace GM
             if (hiddenScore >= CurrentNecessaryUpgradeCount)
             {
                 hiddenScore = 0;
-                CurrentNecessaryUpgradeCount *= 2;
+                CurrentNecessaryUpgradeCount += 5;
                 OpenUpgradePage();
             }
         }
