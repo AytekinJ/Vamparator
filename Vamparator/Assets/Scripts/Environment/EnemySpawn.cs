@@ -34,8 +34,8 @@ public class EnemySpawn : MonoBehaviour
     private bool _isWorking = true;
     private bool _isWorking2 = false;
 
-    int minute = 2;
-    int second = 59;
+    int minute = 0;
+    int second = 10;
     [Header("Prefab")]
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject RangedEnemyPrefab;
@@ -131,14 +131,10 @@ public class EnemySpawn : MonoBehaviour
             yield return new WaitForSeconds(1);
         }
 
-        //canSpawn = false;
-        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        //int enemyNumber = enemies.Length;
-        //while (enemies != null)
-        //{
-        //    enemies[enemyNumber].GetComponent<EnemyHealth>().DieCodes();
-        //    enemyNumber--;
-        //}
+        Debug.Log("Oyun bitti");
+        playerPosition.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        playerPosition.gameObject.GetComponent<Animator>().SetBool("isWon", true);
+        
         //oyun bitiþ kýsmý ayketincim.
     }
 
