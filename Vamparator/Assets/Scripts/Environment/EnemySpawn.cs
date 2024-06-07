@@ -115,7 +115,7 @@ public class EnemySpawn : MonoBehaviour
                 enemySpeed += 0.2f;
                 enemyDamage += 3;
                 enemyHealth += 15f;
-                gm.upgradeNumber += 5;
+                gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
             if (second == 30)
@@ -125,7 +125,7 @@ public class EnemySpawn : MonoBehaviour
                 enemySpeed += 0.2f;
                 enemyDamage += 3;
                 enemyHealth += 15f;
-                gm.upgradeNumber += 5;
+                gm.upgradeNumber += 3;
                 StartCoroutine(textShow());
             }
             if (second < 10)
