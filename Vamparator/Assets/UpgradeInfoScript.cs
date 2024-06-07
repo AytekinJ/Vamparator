@@ -43,11 +43,6 @@ public class UpgradeInfoScript : MonoBehaviour
         common = new Sprite[] { commonDamage, commonFireRate, commonBlood, commonRange, commonPickupRange };
         collectableFollowScript.healMultipler = 1;
         KANCOLLIDERI.radius = 1;
-        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
-        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
-        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
-        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
-        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
     }
 
     public void RandomizeValues()
@@ -114,12 +109,6 @@ public class UpgradeInfoScript : MonoBehaviour
         {
             UpgradeToplamaMenzil(0.2f);
         }
-        Debug.Log("Common: " + sprite.name);
-        Debug.Log("Shoot Delay :" + meleeAttackScript.shootDelay);
-        Debug.Log("Damage : " + enemySpawnScript.PlayerDamage);
-        Debug.Log("Range : " + meleeAttackScript.MaxDistance);
-        Debug.Log("Pickup Range" + KANCOLLIDERI.radius);
-        Debug.Log("Blood Multipler : " + collectableFollowScript.healMultipler);
     }
 
     void Rare(Sprite sprite)

@@ -41,6 +41,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private GameObject RangedEnemyPrefab;
     [SerializeField] public GameObject enemyBullet;
 
+    bool canSpawn = true;
+
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class EnemySpawn : MonoBehaviour
 
     void Update()
     {
-        if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2)
+        if (CurrentEnemyCount < MaxEnemyCount && !_isWorking2 && canSpawn == true)
         {
             StartCoroutine(enemySpawn());
         }
@@ -128,6 +130,15 @@ public class EnemySpawn : MonoBehaviour
             }
             yield return new WaitForSeconds(1);
         }
+
+        //canSpawn = false;
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //int enemyNumber = enemies.Length;
+        //while (enemies != null)
+        //{
+        //    enemies[enemyNumber].GetComponent<EnemyHealth>().DieCodes();
+        //    enemyNumber--;
+        //}
         //oyun bitiþ kýsmý ayketincim.
     }
 

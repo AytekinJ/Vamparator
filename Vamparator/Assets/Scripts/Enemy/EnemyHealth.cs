@@ -35,27 +35,7 @@ public class EnemyHealth : MonoBehaviour
 
             if (enemyHealth < 0)
             {
-                enemySpawn.CurrentEnemyCount--;
-                float randomNum = Random.Range(0, 2);
-
-                if (randomNum == 1)
-                {
-                    Instantiate(Blood, transform.position, Quaternion.identity);
-                }
-
-                GameManager.Score++;
-
-                animator.SetBool("isDied", true);
-                if(gameObject.GetComponent<RangedEnemyMovement>() != null)
-                {
-                    gameObject.GetComponent<RangedEnemyMovement>().canMove = false;
-                }
-                else
-                {
-                    gameObject.GetComponent<EnemyFollow>().canMovee = false;
-                }
-                gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-                Destroy(gameObject, 1.1f);
+                DieCodes();
             }
 
             Rigidbody bulletrb = collision.gameObject.GetComponent<Rigidbody>();
@@ -64,5 +44,30 @@ public class EnemyHealth : MonoBehaviour
             Destroy(effect,1);
         }
         
+    }
+
+    public void DieCodes()
+    {
+        enemySpawn.CurrentEnemyCount--;
+        float randomNum = Random.Range(0, 2);
+
+        if (randomNum == 1)
+        {
+            Instantiate(Blood, transform.position, Quaternion.identity);
+        }
+
+        GameManager.Score++;
+
+        animator.SetBool("isDied", true);
+        if (gameObject.GetComponent<RangedEnemyMovement>() != null)
+        {
+            gameObject.GetComponent<RangedEnemyMovement>().canMove = false;
+        }
+        else
+        {
+            gameObject.GetComponent<EnemyFollow>().canMovee = false;
+        }
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        Destroy(gameObject, 1.1f);
     }
 }
