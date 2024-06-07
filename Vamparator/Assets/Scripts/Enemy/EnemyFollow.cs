@@ -9,6 +9,8 @@ public class EnemyFollow : MonoBehaviour
     EnemySpawn es;
     Vector2 movePosition;
 
+    public bool canMovee = true;
+
     SpriteRenderer spriteRenderer;
 
     private void Start()
@@ -21,10 +23,12 @@ public class EnemyFollow : MonoBehaviour
 
     private void Update()
     {
-        movePosition = playerPosition.position - transform.position;
-        movePosition = movePosition.normalized;
-        enemyrb.velocity = movePosition * es.enemySpeed;
-
-        spriteRenderer.flipX = enemyrb.velocity.x < 0 ? true : false; 
+        if(canMovee)
+        {
+            movePosition = playerPosition.position - transform.position;
+            movePosition = movePosition.normalized;
+            enemyrb.velocity = movePosition * es.enemySpeed;
+            spriteRenderer.flipX = enemyrb.velocity.x < 0 ? true : false;
+        }
     }
 }

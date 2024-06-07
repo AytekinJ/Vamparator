@@ -13,6 +13,8 @@ public class RangedEnemyMovement : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator animator;
 
+    public bool canMove = true;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -24,7 +26,11 @@ public class RangedEnemyMovement : MonoBehaviour
     void Update()
     {
         distance = Vector2.Distance(player.transform.position, transform.position);
-        MovePositionSet();
+        if(canMove)
+        {
+            MovePositionSet();
+        }
+        
         if (distance < 3)
         {
             rb.velocity = moveDirection * es.enemySpeed;

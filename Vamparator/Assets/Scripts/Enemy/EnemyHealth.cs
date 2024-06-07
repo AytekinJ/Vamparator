@@ -46,6 +46,14 @@ public class EnemyHealth : MonoBehaviour
                 GameManager.Score++;
 
                 animator.SetBool("isDied", true);
+                if(gameObject.GetComponent<RangedEnemyMovement>() != null)
+                {
+                    gameObject.GetComponent<RangedEnemyMovement>().canMove = false;
+                }
+                else
+                {
+                    gameObject.GetComponent<EnemyFollow>().canMovee = false;
+                }
                 gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
                 Destroy(gameObject, 1.1f);
             }
